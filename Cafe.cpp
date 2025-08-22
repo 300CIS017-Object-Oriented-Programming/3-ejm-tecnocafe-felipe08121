@@ -13,16 +13,18 @@ void mostrarCartaProductos()
     cout << "2. Cappuccino  $" << PRECIO_CAPPUCCINO << "\n";
     cout << "3. Pandebono   $" << PRECIO_PANDEBONO << "\n";
     cout << "4. Sandwich    $" << PRECIO_SANDWICH << "\n";
+    cout << "5. Pizza       $" << PRECIO_PIZZA    << "\n";
+    cout << "6. Hamburguesa $" << PRECIO_HAMBUERGUESA << "\n";
 }
 
 int leerCodigoProducto()
 {
-    cout << "Ingrese el codigo del producto (1-4): ";
+    cout << "Ingrese el codigo del producto (1-6): ";
     int codigo;
     cin >> codigo;
-    while (codigo < 1 || codigo > 4)
+    while (codigo < 1 || codigo > 6)
     {
-        cout << "Codigo inválido. Intente de nuevo (1-4): ";
+        cout << "Codigo inválido. Intente de nuevo (1-6): ";
         cin.clear();
         cin.ignore(10000, '\n');
         cin >> codigo;
@@ -47,26 +49,26 @@ int leerCantidadProducto()
 
 int obtenerPrecioPorCodigo(int codigoProducto)
 {
-    switch (codigoProducto)
-    {
-    case 1:
-        {
+    switch (codigoProducto) {
+        case 1: {
             return PRECIO_TINTO;
         }
-    case 2:
-        {
+        case 2: {
             return PRECIO_CAPPUCCINO;
         }
-    case 3:
-        {
+        case 3: {
             return PRECIO_PANDEBONO;
         }
-    case 4:
-        {
+        case 4: {
             return PRECIO_SANDWICH;
         }
-    default:
-        {
+        case 5: {
+            return PRECIO_PIZZA;
+        }
+        case 6: {
+            return PRECIO_HAMBUERGUESA;
+        }
+        default: {
             return 0;
         }
     }
@@ -74,26 +76,27 @@ int obtenerPrecioPorCodigo(int codigoProducto)
 
 string obtenerNombreProducto(int codigoProducto)
 {
-    switch (codigoProducto)
-    {
-    case 1:
-        {
+    switch (codigoProducto) {
+        case 1: {
             return "Tinto";
         }
-    case 2:
-        {
+        case 2: {
             return "Cappuccino";
         }
-    case 3:
-        {
+        case 3: {
             return "Pandebono";
         }
-    case 4:
-        {
+        case 4: {
             return "Sándwich";
         }
-    default:
-        {
+        case 5: {
+            return "Pizza";
+        }
+        case 6: {
+            return "Hamburguesa";
+        }
+
+        default: {
             return "Desconocido";
         }
     }
@@ -205,10 +208,18 @@ void prediligenciarProductosDemo(int codigos[], int cantidades[], int & cantidad
     codigos[2] = 4;  // Sandwich
     cantidades[2] = 1;
 
-    cantidadItemsRegistrados = 3;
+    codigos[ 3 ] = 5; // Pizza
+    cantidades[ 3 ] = 4;
+
+    codigos[ 4 ] = 6; // Hamburguesas
+    cantidades[ 4 ] = 5;
+
+    cantidadItemsRegistrados = 6;
 
     cout << "\nSe han cargado productos de ejemplo en el pedido:\n";
     cout << "- 2 Tintos\n";
     cout << "- 3 Pandebonos\n";
-    cout << "- 1 Sándwich\n\n";
+    cout << "- 1 Sandwich\n";
+    cout << "- 4 Pizzas\n";
+    cout << "- 5 Hamburguesas\n\n";
 }

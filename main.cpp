@@ -19,14 +19,14 @@ void mostrarMenuPrincipal()
     cout << "3. Finalizar y pagar\n";
     cout << "4. Prediligenciar productos de demostracion\n";
     cout << "-1. Salir\n";
-    cout << "Seleccione una opcion (2): ";
+    cout << "Seleccione una opcion: ";
 }
 
 int leerOpcionMenu()
 {
     int opcion;
     cin >> opcion;
-    while (opcion < 1 || opcion > 5)
+    while ((opcion < 1 || opcion > 5 ) && (opcion != -1) )
     {
         cout << "Opcion invalida. Intente de nuevo (1-4): ";
         cin.clear();

@@ -34,6 +34,16 @@ const int PRECIO_PANDEBONO = 3000;
  */
 const int PRECIO_SANDWICH = 8500;
 
+const int PRECIO_PIZZA = 8500;
+/**
+ * @brief Precio del producto Pizza.
+ */
+
+const int PRECIO_HAMBUERGUESA = 20000;
+/**
+ * @brief Precio del producto Hamburguesa.
+ */
+
 // --- Descuentos (% expresado de 0.0 a 1.0) ---
 /**
  * @brief Descuento aplicado a estudiantes (10%).
