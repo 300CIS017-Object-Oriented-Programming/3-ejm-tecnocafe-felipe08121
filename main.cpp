@@ -18,6 +18,8 @@ void mostrarMenuPrincipal()
     cout << "2. Ver resumen del pedido\n";
     cout << "3. Finalizar y pagar\n";
     cout << "4. Prediligenciar productos de demostracion\n";
+    cout << "5. Ver el producto mas caro del pedido\n";
+    cout << "6. Eliminar un producto\n";
     cout << "-1. Salir\n";
     cout << "Seleccione una opcion: ";
 }
@@ -26,9 +28,9 @@ int leerOpcionMenu()
 {
     int opcion;
     cin >> opcion;
-    while (opcion < 1 || opcion > 5)
+    while ((opcion < 1 || opcion > 6 ) && (opcion != -1) )
     {
-        cout << "Opcion invalida. Intente de nuevo (1-4): ";
+        cout << "Opcion invalida. Intente de nuevo (1-6): ";
         cin.clear();
         cin.ignore(10000, '\n');
         cin >> opcion;
@@ -60,25 +62,20 @@ int main()
         mostrarMenuPrincipal();
         opcion = leerOpcionMenu();
 
-        switch (opcion)
-        {
-        case 1:
-            {
+        switch (opcion) {
+            case 1: {
                 registrarProducto(codigos, cantidades, cantidadItemsRegistrados);
                 break;
             }
 
-        case 2:
-            {
+            case 2: {
                 double subtotal = calcularSubtotalPedido(codigos, cantidades, cantidadItemsRegistrados);
                 cout << fixed << setprecision(2);
                 cout << "\nSubtotal actual: $" << subtotal << "\n\n";
                 break;
             }
-        case 3:
-            {
-                if (cantidadItemsRegistrados == 0)
-                {
+            case 3: {
+                if (cantidadItemsRegistrados == 0) {
                     cout << "\nNo hay productos en el pedido.\n\n";
                     break;
                 }
@@ -92,14 +89,22 @@ int main()
                 cout << "Total a pagar: $" << total << "\n\n";
                 break;
             }
-        case 4:
-            {
+            case 4: {
                 prediligenciarProductosDemo(codigos, cantidades, cantidadItemsRegistrados);
                 break;
             }
 
-        case -1:
-            {
+            case 5: {
+                productoMasCaro( codigos, cantidadItemsRegistrados ); // Funciona
+                break;
+            }
+
+            case 6: {
+                eliminarProductos( codigos, cantidades, cantidadItemsRegistrados  ); // Funciona
+                break;
+            }
+
+            case -1: {
                 cout << "\nSaliendo del sistema. ¡Hasta pronto!\n";
                 break;
             }

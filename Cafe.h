@@ -7,11 +7,14 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
+using std::fixed;
+using std::setprecision;
 
 // --- Constantes de precios ---
 /**
@@ -34,6 +37,16 @@ const int PRECIO_PANDEBONO = 3000;
  */
 const int PRECIO_SANDWICH = 8500;
 
+const int PRECIO_PIZZA = 9000;
+/**
+ * @brief Precio del producto Pizza.
+ */
+
+const int PRECIO_HAMBUERGUESA = 20000;
+/**
+ * @brief Precio del producto Hamburguesa.
+ */
+
 // --- Descuentos (% expresado de 0.0 a 1.0) ---
 /**
  * @brief Descuento aplicado a estudiantes (10%).
@@ -50,10 +63,19 @@ const double DESCUENTO_PROFESOR = 0.05;
  */
 const double DESCUENTO_VISITANTE = 0.00;
 
+
+const double DESCUENTO_PERAFAN = 1.00;
+
+/**
+ * @brief Descuento aplicado a gente con apellido perafan (100%).
+ */
+
 /**
  * @brief Máximo número de ítems distintos que se pueden registrar en un pedido.
  */
 const int MAX_ITEMS = 50;
+
+
 
 // --- Declaraciones de funciones ---
 
@@ -143,5 +165,31 @@ void mostrarResumenPedido(const int codigos[], const int cantidades[], int canti
  * @param cantidadItemsRegistrados Referencia al número de ítems registrados en el pedido.
  */
 void prediligenciarProductosDemo(int codigos[], int cantidades[], int& cantidadItemsRegistrados);
+
+void productoMasCaro( const int codigos[], int cantidadItemsRegistrados );
+/**
+ * @brief Lee los precios los precios de los productos seleccionados y regresa el mas caro.
+ * @param codigos Arreglo de códigos de productos en el pedido.
+ * @param cantidadItemsRegistrados Referencia al número de ítems registrados en el pedido.
+ */
+
+void eliminarProductos( int codigos[], int cantidades[], int& cantidadItemsRegistrados );
+
+/**
+ * @brief Lee el nombre de todos los productos seleccionado mas la suma total del precio
+ * de los productos.
+ * @param codigos Arreglo de códigos de productos en el pedido.
+ * @param cantidades Arreglo de cantidades de productos en el pedido.
+ * @param cantidadItemsRegistrados Referencia al número de ítems registrados en el pedido.
+ */
+
+void productosRegistrados(int codigos[], int cantidades[], int cantidadItemsRegistrados );
+
+/**
+ * @brief Elimina el producto seleccionado por el usuario usando el codigo del producto.
+ * @param codigos Arreglo de códigos de productos en el pedido.
+ * @param cantidades Arreglo de cantidades de productos en el pedido.
+ * @param cantidadItemsRegistrados Referencia al número de ítems registrados en el pedido.
+ */
 
 #endif //CAFE_H
