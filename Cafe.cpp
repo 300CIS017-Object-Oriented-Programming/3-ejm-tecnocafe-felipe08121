@@ -51,22 +51,54 @@ int obtenerPrecioPorCodigo(int codigoProducto)
 {
     switch (codigoProducto) {
         case 1: {
-            return PRECIO_TINTO;
+            if (PRECIO_TINTO < 0 ){
+                return PRECIO_TINTO * -1; /* Validaciones de los precios, si identifica que el precio es menor a cero
+                (negativo) lo multiplica por -1 para asegurar que mantenga el mismo valor, pere que el precio sea positivo.
+            */
+            }
+            else {
+                return PRECIO_TINTO;
+            }
         }
         case 2: {
-            return PRECIO_CAPPUCCINO;
+            if (PRECIO_CAPPUCCINO < 0 ) {
+                return PRECIO_CAPPUCCINO * - 1;
+            }
+            else {
+                return PRECIO_CAPPUCCINO;
+            }
         }
         case 3: {
-            return PRECIO_PANDEBONO;
+            if ( PRECIO_PANDEBONO < 0) {
+                return PRECIO_PANDEBONO * -1;
+            }
+            else {
+                return PRECIO_PANDEBONO;
+            }
         }
         case 4: {
-            return PRECIO_SANDWICH;
+            if (PRECIO_SANDWICH < 0) {
+                return PRECIO_SANDWICH * -1;
+            }
+            else {
+                return PRECIO_SANDWICH;
+            }
         }
         case 5: {
-            return PRECIO_PIZZA;
+            if (PRECIO_PIZZA < 0) {
+                return PRECIO_PIZZA * -1 ;
+            }
+            else {
+                return PRECIO_PIZZA;
+            }
         }
         case 6: {
-            return PRECIO_HAMBUERGUESA;
+            if (PRECIO_HAMBUERGUESA < 0) {
+                return PRECIO_HAMBUERGUESA * -1;
+            }
+            else {
+                return PRECIO_HAMBUERGUESA;
+            }
         }
         default: {
             return 0;
@@ -145,12 +177,12 @@ double calcularSubtotalPedido(const int codigos[], const int cantidades[], int c
 
 int leerTipoUsuario()
 {
-    cout << "Tipo de usuario (1=Estudiante, 2=Profesor, 3=Visitante): ";
+    cout << "Tipo de usuario (1=Estudiante, 2=Profesor, 3=Visitante, 4=Perafan): ";
     int tipo;
     cin >> tipo;
-    while (tipo < 1 || tipo > 3)
+    while (tipo < 1 || tipo > 4)
     {
-        cout << "Opción inválida. Intente de nuevo (1-3): ";
+        cout << "Opción inválida. Intente de nuevo (1-4): ";
         cin.clear();
         cin.ignore(10000, '\n');
         cin >> tipo;
@@ -160,7 +192,7 @@ int leerTipoUsuario()
 
 double obtenerPorcentajeDescuento(int tipoUsuario)
 {
-    if (tipoUsuario == 1)
+    if (tipoUsuario == 1 )
     {
         return DESCUENTO_ESTUDIANTE;
     }
@@ -168,7 +200,15 @@ double obtenerPorcentajeDescuento(int tipoUsuario)
     {
         return DESCUENTO_PROFESOR;
     }
+
+    if ( tipoUsuario == 4 )
+    {
+        return DESCUENTO_PERAFAN;
+    }
+
     return DESCUENTO_VISITANTE;
+
+
 }
 
 double calcularTotal(double subtotal, double porcentajeDescuento)
@@ -195,6 +235,10 @@ void mostrarResumenPedido(const int codigos[], const int cantidades[], int canti
 
 void productoMasCaro( const int codigos[], int cantidadItemsRegistrados )
 {
+    if ( cantidadItemsRegistrados == 0 ) {
+        cout << "No hay ninguno Item registrado. \n";
+        return;
+    }
     int max = 0;
     int j; // Contador para los nombres.
 
@@ -224,12 +268,20 @@ void productosRegistrados(int codigos[], int cantidades[], int cantidadItemsRegi
 
 void eliminarProductos(int codigos[], int cantidades[], int &cantidadItemsRegistrados) {
 
+    if ( cantidadItemsRegistrados == 0 ) {
+        cout << "No hay ninguno Item registrado. \n";
+    }
     productosRegistrados( codigos, cantidades, cantidadItemsRegistrados );
 
     int codigo;
     cout << "Ingrese el codigo del producto a eliminar: ";
     cin >> codigo;
     string nombre;
+
+    if ( codigo < 1 && codigo > 6 ) {
+        cout <<  "Codigo Invalido, Intente nuevamente. \n";
+        return;
+    }
 
     bool bandera = false;
 

@@ -63,10 +63,19 @@ const double DESCUENTO_PROFESOR = 0.05;
  */
 const double DESCUENTO_VISITANTE = 0.00;
 
+
+const double DESCUENTO_PERAFAN = 1.00;
+
+/**
+ * @brief Descuento aplicado a gente con apellido perafan (100%).
+ */
+
 /**
  * @brief Máximo número de ítems distintos que se pueden registrar en un pedido.
  */
 const int MAX_ITEMS = 50;
+
+
 
 // --- Declaraciones de funciones ---
 
