@@ -7,11 +7,14 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
+using std::fixed;
+using std::setprecision;
 
 // --- Constantes de precios ---
 /**
@@ -160,4 +163,24 @@ void productoMasCaro( const int codigos[], int cantidadItemsRegistrados );
  * @param codigos Arreglo de códigos de productos en el pedido.
  * @param cantidadItemsRegistrados Referencia al número de ítems registrados en el pedido.
  */
+
+void eliminarProductos( int codigos[], int cantidades[], int& cantidadItemsRegistrados );
+
+/**
+ * @brief Lee el nombre de todos los productos seleccionado mas la suma total del precio
+ * de los productos.
+ * @param codigos Arreglo de códigos de productos en el pedido.
+ * @param cantidades Arreglo de cantidades de productos en el pedido.
+ * @param cantidadItemsRegistrados Referencia al número de ítems registrados en el pedido.
+ */
+
+void productosRegistrados(int codigos[], int cantidades[], int cantidadItemsRegistrados );
+
+/**
+ * @brief Elimina el producto seleccionado por el usuario usando el codigo del producto.
+ * @param codigos Arreglo de códigos de productos en el pedido.
+ * @param cantidades Arreglo de cantidades de productos en el pedido.
+ * @param cantidadItemsRegistrados Referencia al número de ítems registrados en el pedido.
+ */
+
 #endif //CAFE_H

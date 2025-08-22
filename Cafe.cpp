@@ -209,6 +209,55 @@ void productoMasCaro( const int codigos[], int cantidadItemsRegistrados )
     cout << "Y su precio es: " << max << "\n\n";
 }
 
+void productosRegistrados(int codigos[], int cantidades[], int cantidadItemsRegistrados ){
+    cout << "Los siguientes productos : " << '\n';
+    for ( int i = 0;  i < cantidadItemsRegistrados; i++ ) {
+
+        cout <<obtenerNombreProducto( codigos [ i ] ) << "; Codigo de producto: " << codigos[ i ] << '\n';
+
+    }
+
+    double subtotal = calcularSubtotalPedido(codigos, cantidades, cantidadItemsRegistrados);
+    cout << fixed << setprecision(2);
+    cout << "\nSubtotal actual: $" << subtotal << "\n\n";
+}
+
+void eliminarProductos(int codigos[], int cantidades[], int &cantidadItemsRegistrados) {
+
+    productosRegistrados( codigos, cantidades, cantidadItemsRegistrados );
+
+    int codigo;
+    cout << "Ingrese el codigo del producto a eliminar: ";
+    cin >> codigo;
+    string nombre;
+
+    bool bandera = false;
+
+    for (int i = 0 ; i < cantidadItemsRegistrados ; i++ ) {
+        cout << codigos[i] << "- \n";
+        if ( codigos[ i ] == codigo )  {
+            nombre = obtenerNombreProducto(codigos[ i ]);
+            cantidades[ i ]=0;
+            codigos[ i ] = 0;
+            bandera = true;
+            cout << codigos[i] << " <--\n";
+        }
+        if ( bandera == true ) {
+            codigos[ i ] = codigos[ i + 1 ];
+            cantidades[ i ] = cantidades[ i + 1 ];
+            codigos[ i + 1 ] = 0;
+            cantidades[ i + 1 ] = 0;
+            cout << codigos[i] << " --\n";
+        }
+    }
+    cantidadItemsRegistrados--;
+    productosRegistrados( codigos, cantidades, cantidadItemsRegistrados );
+
+    cout << "El producto: " << nombre << " Fue eliminado" <<"\n\n";
+
+}
+
+
 void prediligenciarProductosDemo(int codigos[], int cantidades[], int & cantidadItemsRegistrados)
 {
     // Limpiar pedido actual si existe
@@ -230,7 +279,7 @@ void prediligenciarProductosDemo(int codigos[], int cantidades[], int & cantidad
     codigos[ 4 ] = 6; // Hamburguesas
     cantidades[ 4 ] = 5;
 
-    cantidadItemsRegistrados = 6;
+    cantidadItemsRegistrados = 5;
 
     cout << "\nSe han cargado productos de ejemplo en el pedido:\n";
     cout << "- 2 Tintos\n";
