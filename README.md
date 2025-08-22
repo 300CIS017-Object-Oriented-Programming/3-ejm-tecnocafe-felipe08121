@@ -202,3 +202,9 @@ Para entender el funcionamiento, se recomienda ejecutar el programa en este orde
 5. **Mejora la validación** para asegurar que los precios siempre sean positivos
 6. **Añade una nueva categoría de usuario** con un descuento diferente
 
+**Respuesta 2:** El & al lado de la variable significa que se está pasando una referencia a esa variable. Eso quiere decir que cualquier cambio que se haga sobre esa referencia dentro de la función se aplica directamente a la variable original que fue enviada como parámetro.
+
+En cambio, si no usamos &, lo que se pasa es una copia por valor. Entonces, cualquier modificación dentro de la función solo afectará a esa copia local y no a la variable original del programa.
+
+Por eso, cuando se quita el &, los cambios en cantidadItemsRegistrados ya no se reflejan fuera de la función, y el sistema sigue viendo el valor original (normalmente 0).
+
