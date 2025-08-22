@@ -87,7 +87,7 @@ string obtenerNombreProducto(int codigoProducto)
             return "Pandebono";
         }
         case 4: {
-            return "Sándwich";
+            return "Sandwich";
         }
         case 5: {
             return "Pizza";
@@ -191,6 +191,22 @@ void mostrarResumenPedido(const int codigos[], const int cantidades[], int canti
     }
     cout << "Subtotal: $" << subtotal << "\n";
     cout << "Descuento aplicado: " << (porcentajeDescuento * 100) << "%\n";
+}
+
+void productoMasCaro( const int codigos[], int cantidadItemsRegistrados )
+{
+    int max = 0;
+    int j; // Contador para los nombres.
+
+    for (int i = 0 ; i < cantidadItemsRegistrados ; i++ ) {
+        if ( obtenerPrecioPorCodigo(codigos[ i ]) > max )  {
+            max = obtenerPrecioPorCodigo(codigos[ i ]);
+            j = i;
+        }
+    }
+
+    cout << "El producto mas caro es: " << obtenerNombreProducto(codigos[ j ]) << '\n';
+    cout << "Y su precio es: " << max << "\n\n";
 }
 
 void prediligenciarProductosDemo(int codigos[], int cantidades[], int & cantidadItemsRegistrados)

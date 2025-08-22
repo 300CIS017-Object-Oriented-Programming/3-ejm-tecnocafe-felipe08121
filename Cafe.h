@@ -34,7 +34,7 @@ const int PRECIO_PANDEBONO = 3000;
  */
 const int PRECIO_SANDWICH = 8500;
 
-const int PRECIO_PIZZA = 8500;
+const int PRECIO_PIZZA = 9000;
 /**
  * @brief Precio del producto Pizza.
  */
@@ -154,4 +154,10 @@ void mostrarResumenPedido(const int codigos[], const int cantidades[], int canti
  */
 void prediligenciarProductosDemo(int codigos[], int cantidades[], int& cantidadItemsRegistrados);
 
+void productoMasCaro( const int codigos[], int cantidadItemsRegistrados );
+/**
+ * @brief Lee los precios los precios de los productos seleccionados y regresa el mas caro.
+ * @param codigos Arreglo de códigos de productos en el pedido.
+ * @param cantidadItemsRegistrados Referencia al número de ítems registrados en el pedido.
+ */
 #endif //CAFE_H
