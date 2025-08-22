@@ -19,7 +19,7 @@ void mostrarMenuPrincipal()
     cout << "3. Finalizar y pagar\n";
     cout << "4. Prediligenciar productos de demostracion\n";
     cout << "-1. Salir\n";
-    cout << "Seleccione una opcion: ";
+    cout << "Seleccione una opcion (2): ";
 }
 
 int leerOpcionMenu()
